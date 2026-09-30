@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Atelier Noir offers refined fine dining with elevated seasonal cuisine and exceptional hospitality.">
+  <title>Atelier Noir | Fine Dining</title>
+  <style>
+    :root{
+      --bg:#0f0f0f;
+      --panel:#1a1a1a;
+      --ink:#f5f1ed;
+      --muted:#a89a8f;
+      --line:#2a2620;
+      --accent:#d4af37;
+      --accent-dark:#c9a227;
+      --gold:#e8d4a8;
+      --cream:#f5f1ed;
+      --shadow:0 30px 60px rgba(0,0,0,.4);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Georgia', serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.7;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(1200px,calc(100% - 48px));margin:0 auto}
+    .site-header{
+      position:sticky;top:0;z-index:20;
+      background:rgba(15,15,15,.98);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(12px);
+    }
+    .nav-wrap{
+      display:flex;align-items:center;justify-content:space-between;height:90px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:16px;font-weight:700;font-size:1.3rem;
+      letter-spacing:2px;
+    }
+    .brand-mark{
+      width:50px;height:50px;border-radius:0;
+      background:var(--accent);color:var(--bg);
+      display:grid;place-items:center;
+      font:700 24px 'Georgia', serif;
+    }
+    nav{
+      display:flex;gap:32px;align-items:center;color:var(--muted);
+      font-size:0.9rem;letter-spacing:1px;
+    }
+    nav a:hover{color:var(--accent)}
+    .button{
+      display:inline-flex;align-items:center;justify-content:center;
+      border-radius:0;padding:16px 28px;font-weight:700;
+      border:1px solid;cursor:pointer;text-decoration:none;
+      font-family:'Georgia', serif;font-size:0.9rem;
+      letter-spacing:1px;
+    }
+    .button-primary{
+      background:var(--accent);color:var(--bg);border-color:var(--accent);
+    }
+    .button-primary:hover{
+      background:var(--accent-dark);border-color:var(--accent-dark);
+    }
+    .button-light{
+      background:transparent;border-color:var(--ink);color:var(--ink);
+    }
+    .button-light:hover{
+      background:var(--ink);color:var(--bg);
+    }
+    .eyebrow{
+      display:block;color:var(--accent);font-size:0.75rem;
+      letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;
+    }
+    .hero{
+      padding:120px 0 100px;
+      background:linear-gradient(135deg, #0f0f0f 0%, #1a1410 100%);
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;
+    }
+    h1,h2,h3{margin:0;line-height:1.1;letter-spacing:-1px}
+    h1{
+      font-size:clamp(3.2rem, 8vw, 5.5rem);
+      font-weight:700;margin-top:20px;
+    }
+    h2{
+      font-size:clamp(2.2rem, 5vw, 3.8rem);
+      font-weight:700;
+    }
+    h3{
+      font-size:1.4rem;font-weight:700;
+    }
+    .lead{
+      max-width:580px;color:var(--muted);font-size:1.1rem;
+      margin-top:24px;line-height:1.8;
+    }
+    .actions{
+      display:flex;gap:16px;flex-wrap:wrap;margin-top:36px;
+    }
+    .stats{
+      display:flex;gap:48px;flex-wrap:wrap;margin-top:40px;color:var(--muted);
+      font-size:0.95rem;letter-spacing:0.5px;
+    }
+    .stats strong{
+      display:block;color:var(--accent);font-size:1.8rem;margin-bottom:4px;
+      font-family:'Arial', sans-serif;
+    }
+    .hero-art{
+      min-height:450px;background:linear-gradient(135deg, #2a2620 0%, #1f1a15 100%);
+      border:1px solid var(--line);display:grid;place-items:center;
+      position:relative;overflow:hidden;
+    }
+    .hero-art::before{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(circle at 30% 40%, rgba(212,175,55,0.15) 0%, transparent 50%);
+    }
+    .plate-luxury{
+      width:280px;height:280px;border:2px solid var(--accent);
+      display:grid;place-items:center;text-align:center;
+      position:relative;z-index:1;
+    }
+    .plate-luxury small{
+      font-size:11px;letter-spacing:2px;text-transform:uppercase;
+      color:var(--accent);
+    }
+    .plate-luxury b{
+      font-size:28px;font-family:'Arial', sans-serif;font-weight:700;
+      margin:12px 0;letter-spacing:3px;
+    }
+    section{padding:100px 0}
+    .section-head{margin-bottom:40px}
+    .cards-luxury{
+      display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:32px;
+    }
+    .card-luxury{
+      background:var(--panel);border:1px solid var(--line);
+      padding:32px;box-shadow:var(--shadow);
+      border-radius:0;position:relative;
+    }
+    .card-luxury::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:3px;
+      background:var(--accent);
+    }
+    .dish-icon-lux{
+      font-size:2rem;margin-bottom:16px;color:var(--accent);
+    }
+    .card-luxury h3{margin-bottom:12px;font-size:1.35rem}
+    .card-luxury p{color:var(--muted);margin:0 0 16px}
+    .price-lux{
+      color:var(--accent);font-size:1.1rem;font-weight:700;
+      letter-spacing:0.5px;
+    }
+    .cream-bg{
+      background:linear-gradient(135deg, #1a1410 0%, #0f0f0f 100%);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+    .split{
+      display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+    }
+    .panel-lux{
+      background:var(--panel);border:1px solid var(--line);
+      padding:36px;box-shadow:var(--shadow);
+    }
+    .panel-lux::before{
+      content:'';display:block;width:40px;height:2px;
+      background:var(--accent);margin-bottom:24px;
+    }
+    .panel-lux ul{
+      list-style:none;padding:0;margin:24px 0 0;
+    }
+    .panel-lux li{
+      padding:12px 0;color:var(--muted);
+      border-bottom:1px solid var(--line);
+      font-size:0.95rem;
+    }
+    .panel-lux li:before{
+      content:'✦ ';color:var(--accent);margin-right:12px;
+    }
+    .panel-lux li:last-child{border-bottom:none}
+    .banner-lux{
+      background:linear-gradient(135deg, #1a1410 0%, #0f0f0f 100%);
+      border:1px solid var(--line);padding:60px;
+      display:flex;align-items:center;justify-content:space-between;gap:40px;
+      flex-wrap:wrap;
+    }
+    .banner-lux p{margin:0;color:var(--muted);font-size:0.95rem;max-width:400px}
+    .site-footer{
+      padding:40px 0 50px;color:var(--muted);border-top:1px solid var(--line);
+    }
+    .footer-wrap{
+      display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
+      font-size:0.9rem;letter-spacing:0.5px;
+    }
+    .reviews-lux{
+      display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:32px;
+    }
+    .review-lux{
+      background:var(--panel);border:1px solid var(--line);
+      padding:32px;box-shadow:var(--shadow);
+    }
+    .stars-lux{
+      color:var(--accent);letter-spacing:2px;margin-bottom:16px;
+    }
+    .review-lux p{
+      color:var(--muted);font-style:italic;margin:0 0 20px;
+      line-height:1.8;
+    }
+    .review-lux strong{
+      display:block;color:var(--ink);font-weight:700;
+      letter-spacing:0.5px;
+    }
+    @media(max-width:950px){
+      .hero-grid, .split, .cards-luxury, .reviews-lux{
+        grid-template-columns:1fr;
+      }
+      nav{display:none}
+      .hero-art{min-height:380px}
+      .banner-lux{flex-direction:column;text-align:center}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#"><span class="brand-mark">A</span>ATELIER NOIR</a>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#story">Our Philosophy</a>
+        <a href="#reviews">Reviews</a>
+        <a class="button button-primary" href="mailto:huzaifaakwami@gmail.com">Reserve</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Refined Culinary Excellence</span>
+          <h1>Elevated Dining, Unforgettable Moments</h1>
+          <p class="lead">An intimate fine dining experience featuring seasonal cuisine, curated wines, and refined service in an atmosphere of understated elegance.</p>
+          <div class="actions">
+            <a class="button button-primary" href="mailto:huzaifaakwami@gmail.com">Make a Reservation</a>
+            <a class="button button-light" href="#menu">Explore the Menu</a>
+          </div>
+          <div class="stats">
+            <span><strong>★ ★ ★</strong>Michelin-style</span>
+            <span><strong>36 Seats</strong>Intimate setting</span>
+            <span><strong>7/7</strong>Open evenings</span>
+          </div>
+        </div>
+        <div class="hero-art">
+          <div class="plate-luxury">
+            <small>Curated</small>
+            <b>ATELIER<br>NOIR</b>
+            <small>EST. 2023</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">The Experience</span>
+          <h2>Signature Expressions</h2>
+        </div>
+        <div class="cards-luxury">
+          <div class="card-luxury">
+            <div class="dish-icon-lux">🍽</div>
+            <h3>Seared Foie Gras</h3>
+            <p>Champagne gastrique, brioche tuile, truffle emulsion</p>
+            <div class="price-lux">$48</div>
+          </div>
+          <div class="card-luxury">
+            <div class="dish-icon-lux">🍖</div>
+            <h3>Dry-Aged Beef</h3>
+            <p>Béarnaise reduction, seasonal vegetables, jus classique</p>
+            <div class="price-lux">$68</div>
+          </div>
+          <div class="card-luxury">
+            <div class="dish-icon-lux">🍫</div>
+            <h3>Dark Chocolate Sphere</h3>
+            <p>70% cacao, passion fruit coulis, edible gold leaf</p>
+            <div class="price-lux">$18</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cream-bg" id="story">
+      <div class="container split">
+        <div class="panel-lux">
+          <span class="eyebrow">Our Philosophy</span>
+          <h2>Culinary Artistry</h2>
+        </div>
+        <div class="panel-lux">
+          <p>At Atelier Noir, we believe that fine dining is an art form. Every plate is meticulously crafted, every ingredient selected for its purity and provenance.</p>
+          <p>Our tasting menu changes seasonally, reflecting our commitment to the finest available ingredients and innovative culinary techniques.</p>
+          <ul>
+            <li>Seasonal tasting menus</li>
+            <li>Wine pairing selections</li>
+            <li>Private dining available</li>
+            <li>Chef's counter seating</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Guest Experiences</span>
+          <h2>Moments to Cherish</h2>
+        </div>
+        <div class="reviews-lux">
+          <div class="review-lux">
+            <div class="stars-lux">★★★★★</div>
+            <p>"A transcendent evening. The precision, creativity, and attention to detail in every course was extraordinary. A true culinary journey."</p>
+            <strong>Catherine D., Paris</strong>
+          </div>
+          <div class="review-lux">
+            <div class="stars-lux">★★★★★</div>
+            <p>"One of the finest dining experiences we've had. The service was impeccable and the wine pairings perfectly complemented each course."</p>
+            <strong>Michael R., New York</strong>
+          </div>
+          <div class="review-lux">
+            <div class="stars-lux">★★★★★</div>
+            <p>"Exceptional. From the amuse-bouche to the petit fours, every detail revealed the chef's mastery. We will return."</p>
+            <strong>Sophie L., London</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container banner-lux">
+        <div>
+          <h2>Your Table Awaits</h2>
+          <p>Intimate dining experiences available by reservation. Private events and chef's counter seating available upon request.</p>
+        </div>
+        <a class="button button-primary" href="mailto:huzaifaakwami@gmail.com">Reserve Your Evening</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <span>© 2024 Atelier Noir</span>
+      <span>12 Rue de la Paix · Paris</span>
+      <span>huzaifaakwami@gmail.com</span>
+    </div>
+  </footer>
+</body>
+</html>
